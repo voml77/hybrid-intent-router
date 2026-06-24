@@ -1,0 +1,146 @@
+# ───────────────────────────────────────────────
+# EmbeddingIntentRouter – Intent Prototypes Config
+# ───────────────────────────────────────────────
+# Language: German examples + English descriptions
+# Model: multilingual SentenceTransformer
+#
+# Each intent defines prototype sentences that
+# capture the semantic core of that intent.
+# The router computes the centroid embedding for
+# each intent and classifies by cosine similarity.
+
+model:
+  default: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+
+thresholds:
+  accept: 0.52
+  weak_accept: 0.45
+  min_margin: 0.07
+
+intents:
+
+  smalltalk:
+    description: "Greetings, casual conversation, social interaction"
+    examples:
+      - "Hallo, wie geht es dir?"
+      - "Hey, schön dich zu sehen"
+      - "Guten Morgen! Alles gut bei dir?"
+      - "Danke dir, gleichfalls"
+      - "Bis morgen, mach's gut"
+      - "Tschüss, bis später"
+      - "Wie läuft's bei dir?"
+      - "Schön, dass du da bist"
+      - "Na, alles klar?"
+      - "Freut mich, dich kennenzulernen"
+
+  project:
+    description: "Project work, status updates, development progress"
+    examples:
+      - "Lass uns am Projekt weiterarbeiten"
+      - "Wo stehen wir mit der Entwicklung?"
+      - "Fasse den aktuellen Stand zusammen"
+      - "Was ist der nächste Schritt im Projekt?"
+      - "Ich arbeite gerade an der Umsetzung"
+      - "Wie ist der Fortschritt bei der Aufgabe?"
+      - "Wir müssen den Projektplan aktualisieren"
+      - "Ich teste gerade die neuen Ergebnisse"
+      - "Können wir den aktuellen Status durchgehen?"
+      - "Was fehlt noch zur Fertigstellung?"
+
+  code_review:
+    description: "Code analysis, review requests, quality assessment"
+    examples:
+      - "Kannst du dir diese Python-Datei ansehen?"
+      - "Bitte prüfe den Code auf Fehler"
+      - "Bewerte die Qualität dieser Implementierung"
+      - "Führe ein Code Review für das Modul durch"
+      - "Analysiere diese Funktion und gib Feedback"
+      - "Sieh dir den Algorithmus an und optimiere ihn"
+      - "Prüfe die Logik in dieser Klasse"
+      - "Was kann man an diesem Code verbessern?"
+      - "Review bitte den aktuellen Patch"
+      - "Ist die Implementierung sauber und sicher?"
+
+  debugging:
+    description: "Error analysis, troubleshooting, root cause investigation"
+    examples:
+      - "Ich bekomme einen Fehler, hilf mir beim Debuggen"
+      - "Warum bekomme ich eine Connection-Refused Meldung?"
+      - "Der Code funktioniert plötzlich nicht mehr"
+      - "Das Programm stürzt ohne Fehlermeldung ab"
+      - "Hilf mir, die Ursache des Problems zu finden"
+      - "Warum ist die Latenz auf einmal so hoch?"
+      - "Die API gibt einen unerwarteten Statuscode zurück"
+      - "Irgendwo ist ein Logikfehler, finde ihn bitte"
+      - "Kannst du den Traceback analysieren?"
+      - "Der Workflow bricht ab – woran liegt's?"
+
+  file_operation:
+    description: "File system operations: create, edit, move, delete"
+    examples:
+      - "Bitte lege eine neue Python-Datei an"
+      - "Lösche diese temporäre Datei"
+      - "Benenne die Konfigurationsdatei um"
+      - "Verschiebe das Logfile in den Archiv-Ordner"
+      - "Erstelle einen neuen Ordner für das Modul"
+      - "Kopiere die Datei in das Backup-Verzeichnis"
+      - "Ändere den Inhalt der Konfiguration"
+      - "Entferne die alte Version aus dem Projekt"
+      - "Schreibe die neue Konfiguration in die Datei"
+      - "Organisiere die Dateistruktur neu"
+
+  memory_request:
+    description: "Save, recall, or manage persistent information"
+    examples:
+      - "Merke dir diese Einstellung für später"
+      - "Speichere bitte meine aktuelle Konfiguration"
+      - "Bitte erinnere mich an diese Entscheidung"
+      - "Notiere das für die nächste Sitzung"
+      - "Behalte diesen wichtigen Punkt im Gedächtnis"
+      - "Das solltest du dir für später merken"
+      - "Erinnere mich an die Besprechung morgen"
+      - "Speichere diese Information dauerhaft"
+      - "Vergiss nicht, worüber wir gesprochen haben"
+      - "Lege das in meinen Notizen ab"
+
+  online_research:
+    description: "Web search, online documentation, current information retrieval"
+    examples:
+      - "Suche bitte aktuelle Informationen dazu"
+      - "Recherchiere online nach der neuesten Version"
+      - "Prüfe die aktuelle Dokumentation im Web"
+      - "Gibt es dazu neue Entwicklungen?"
+      - "Was sagt die offizielle Doku dazu?"
+      - "Such im Internet nach Best Practices"
+      - "Finde heraus, ob es ein Update gibt"
+      - "Recherchiere die aktuellen Benchmark-Ergebnisse"
+      - "Schau nach, was der aktuelle Stand der Technik ist"
+      - "Hol Informationen aus dem Web ein"
+
+  privacy_sensitive:
+    description: "Privacy, data protection, credential handling, compliance"
+    examples:
+      - "Ist das datenschutzrechtlich in Ordnung?"
+      - "Dürfen wir diese Daten speichern?"
+      - "Wie gehen wir sicher mit Zugangsdaten um?"
+      - "Prüfe, ob hier ein Sicherheitsrisiko besteht"
+      - "Ist die Übertragung verschlüsselt?"
+      - "Darf ich das auf dem Server speichern?"
+      - "Welche Daten sind hier sensibel?"
+      - "Wie vermeiden wir ein Datenleck?"
+      - "Ist die Authentifizierung sicher implementiert?"
+      - "Prüfe bitte die Datenschutzkonformität"
+
+  architecture:
+    description: "System design, architectural decisions, technical planning"
+    examples:
+      - "Wie sollte die Architektur aufgebaut sein?"
+      - "Lass uns das Systemdesign besprechen"
+      - "Welche Komponenten brauchen wir?"
+      - "Wie ist der Datenfluss in der Pipeline?"
+      - "Soll das lokal oder in der Cloud laufen?"
+      - "Welche Schichten sollte die Architektur haben?"
+      - "Wie vermeiden wir eine zu starke Kopplung?"
+      - "Welche Vor- und Nachteile hat dieser Ansatz?"
+      - "Entwirf ein Konzept für das Routing"
+      - "Wie skalieren wir das System langfristig?"
